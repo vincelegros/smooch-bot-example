@@ -23,18 +23,7 @@ module.exports = new Script({
             return bot.setProp('name', name)
                 .then(() => bot.say(`I was picturing you more as a Mortitia, but alright, I'll call you ${name}
 Is that OK? %[Sure](postback:yes) %[Hell no](postback:no)`))
-                .then(() => 'choice');
-        }
-    
-    },
-    
-    choice: {
-        if (postback:yes)
-        .then(() => bot.say('Cool, nice to meet you ${name}'))
-        .then(() => 'alright');
-        if (postback:no)
-        .then(() => bot.say('I guess I will call you Poopface then')
-        .then(() => 'alright');
+                .then(() => 'alright');
         }
   
     },
