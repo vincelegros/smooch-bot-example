@@ -21,7 +21,7 @@ module.exports = new Script({
             const name = message.text;
             return bot.setProp('name', name)
                 .then(() => bot.say(`I was picturing you more as a Mortitia, but alright, I'll call you ${name}
-Is that OK? %[Sure](postback:yes) %[Hell no](postback:no)`))
+Is that OK? %[Sure](postback:PAYLOAD) %[Hell no](postback:PAYLOAD)`))
                 .then(() => 'alright');
         }
     },
