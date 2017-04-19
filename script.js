@@ -10,22 +10,30 @@ module.exports = new Script({
 
     start: {
         receive: (bot) => {
-            return bot.say('Hi! I\'m Legrobot!')
+            return bot.say('Hi! I\'m Legrobot, the personal bot of Vincent Legros, a great guy, really ![](https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAO7AAAAJDMwYmM3NWJmLTY3MTUtNDc5OC1hZTRmLTIxODdiYmIwNjdjOA.jpg)!')
                 .then(() => 'askName');
         }
     },
 
     askName: {
-        prompt: (bot) => bot.say('What\'s your name pretty lady?'),
+        prompt: (bot) => bot.say('What\'s your name pretty lady (or handsome fellow, my vision is quite not right)?'),
         receive: (bot, message) => {
             const name = message.text;
             return bot.setProp('name', name)
                 .then(() => bot.say(`I was picturing you more as a Mortitia, but alright, I'll call you ${name}
 Is that OK? %[Sure](postback:yes) %[Hell no](postback:no)`))
-                .then(() => 'finish');
+                .then(() => 'alright');
         }
     },
 
+    alright: {
+        receive: (bot, message) => {
+            return bot.getProp('name')
+                .then((name) => bot.say(`Alright ${name}, I'm sure you would love to know more about Vincent ` +
+                        '%[Yes, I would](postback:yes) %[I know the animal already](postback:no)'))
+                .then(() => 'finish');
+        }
+    },
     finish: {
         receive: (bot, message) => {
             return bot.getProp('name')
