@@ -30,7 +30,7 @@ Is that OK? %[Sure](postback:yes) %[Hell no](postback:no)`))
         if (postback:yes)
         .then(() => bot.say('Cool, nice to meet you ${name}'))
         .then(() => 'alright');
-        if (postback: no)
+        if (postback:no)
         .then(() => bot.say('I guess I will call you Poopface then')
         .then(() => 'alright');
     },
