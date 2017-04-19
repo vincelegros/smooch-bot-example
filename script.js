@@ -25,7 +25,9 @@ module.exports = new Script({
 Is that OK? %[Sure](postback:yes) %[Hell no](postback:no)`))
                 .then(() => 'choice');
         }
+    
     },
+    
     choice: {
         if (postback:yes)
         .then(() => bot.say('Cool, nice to meet you ${name}'))
@@ -33,8 +35,9 @@ Is that OK? %[Sure](postback:yes) %[Hell no](postback:no)`))
         if (postback:no)
         .then(() => bot.say('I guess I will call you Poopface then')
         .then(() => 'alright');
+        }
+  
     },
-
     alright: {
         receive: (bot, message) => {
             return bot.getProp('name')
