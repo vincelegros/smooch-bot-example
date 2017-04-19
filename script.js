@@ -30,7 +30,7 @@ Is that OK? %[Sure](postback:yes) %[Hell no](postback:no)`))
         receive: (bot, message) => {
             return bot.getProp('name')
                 .then((name) => bot.say(`Sorry ${name}, my creator is still ` +
-                        'learning how to make bots and is quite limited!'))
+                        'learning how to make bots and is quite limited! ![](http://evergreensmallbusiness.com/wp/wp-content/uploads/2014/10/iStock_000044333992Mediumsystemerror-622x415.jpg)'))
                 .then(() => 'finish');
         }
     }
