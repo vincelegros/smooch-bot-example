@@ -10,9 +10,25 @@ module.exports = new Script({
 
     start: {
         receive: (bot) => {
-            return bot.say('Hi! I\'m Legrobot, the personal bot of Vincent Legros, a great guy, really! ![](https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAO7AAAAJDMwYmM3NWJmLTY3MTUtNDc5OC1hZTRmLTIxODdiYmIwNjdjOA.jpg)!')
-                .then(() => 'askName');
+            return bot.say('Hi! I\'m Legrobot, the personal bot of Vincent Legros, a great guy, really! Just say hello to get started ![](https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAO7AAAAJDMwYmM3NWJmLTY3MTUtNDc5OC1hZTRmLTIxODdiYmIwNjdjOA.jpg)!')
+                .then(() => 'speak');
         }
+   },
+
+    speak: {
+        receive: (bot, message) => {
+
+            let upperText = message.text.trim().toUpperCase();
+
+            function updateSilent() {
+                switch (upperText) {
+                    case "CONNECT ME":
+                        return bot.setProp("silent", true);
+                    case "DISCONNECT":
+                        return bot.setProp("silent", false);
+                    default:
+                        return Promise.resolve();
+                }
     },
 
     askName: {
